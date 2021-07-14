@@ -1,0 +1,68 @@
+{
+  "name": "octobercms",
+  "description": "Free, open-source, self-hosted CMS platform based on the Laravel PHP Framework.",
+  "directories": {
+    "test": "tests/js/cases",
+    "helpers": "tests/js/helpers"
+  },
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/octobercms/october.git"
+  },
+  "contributors": [
+    {
+      "name": "Alexey Bobkov",
+      "email": "aleksey.bobkov@gmail.com"
+    },
+    {
+      "name": "Samuel Georges",
+      "email": "daftspunky@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/octobercms/october/issues"
+  },
+  "homepage": "https://octobercms.com/",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "chai": "^4.2.0",
+    "jquery": "^3.4.1",
+    "jsdom": "^15.1.1",
+    "laravel-mix": "^6.0.25",
+    "mocha": "^6.2.0",
+    "sinon": "^7.4.1",
+    "svg-spritemap-webpack-plugin": "^4.1.0",
+    "browser-sync": "^2.27.4",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "copy-webpack-plugin": "",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-webpack-plugin": "^2.4.2",
+    "laravel-mix-polyfill": "^3.0.0",
+    "laravel-mix-webp": "^0.1.1",
+    "lodash": "^4.17.19",
+    "postcss": "^8.1.14",
+    "postcss-sort-media-queries": "^3.2.3",
+    "sass": "^1.32.5",
+    "sass-loader": "^10.1.1"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.3.1",
+    "copy-webpack-plugin": "^9.0.1",
+    "imagemin-mozjpeg": "^9.0.0"
+  }
+}

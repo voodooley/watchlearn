@@ -1,0 +1,6 @@
+plugin:
+    name: 'voodooley.movies::lang.plugin.name'
+    description: 'voodooley.movies::lang.plugin.description'
+    author: voodooley
+    icon: oc-icon-video-camera
+    homepage: ''

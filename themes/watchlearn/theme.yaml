@@ -1,0 +1,9 @@
+name: "watchlearn"
+description: "Тема учебного проекта"
+author: "voodooley"
+homepage: "http://watchlearn"
+code: "watchlearn"
+form:
+    fields:
+        googleanalytics_id:
+            label: 'Google Analytics ID'

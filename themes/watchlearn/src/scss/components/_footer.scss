@@ -1,0 +1,17 @@
+.footer {
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--color-blue);
+    }
+
+    &__copyright {
+        color: var(--color-grey);
+        font-size: 14px;
+    }
+
+    &__logo {
+        font-size: 32px;
+    }
+}

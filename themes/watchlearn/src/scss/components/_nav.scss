@@ -1,0 +1,22 @@
+.nav {
+    &__items {
+        display: flex;
+    }
+
+    &__item {
+        &:not(:last-child) {
+            margin-right: 20px;
+        }
+    }
+
+    &__link {
+        color: #eeeeee;
+        transition: color .2s linear;
+
+        &:hover,
+        &--active {
+            color: var(--color--active);
+            transition: color .2s linear;
+        }
+    }
+}
