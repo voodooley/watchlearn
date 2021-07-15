@@ -79,7 +79,7 @@ a {
 
 /* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
 .container {
-  margin: 2em auto;
+  margin: 0 auto;
   max-width: 1230px;
   padding: 0 15px;
 }
@@ -105,11 +105,20 @@ a {
 }
 
 .page-home,
-.page-movies {
+.page-movies,
+.page-movie-single {
   display: flex;
   flex-direction: column;
 }
 
+.page__title {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.header {
+  margin-top: 2em;
+}
 .header__container {
   display: flex;
   justify-content: space-between;
@@ -117,6 +126,9 @@ a {
   background-color: #379956;
 }
 
+.footer {
+  margin-bottom: 2em;
+}
 .footer__container {
   display: flex;
   justify-content: space-between;
@@ -144,6 +156,39 @@ a {
 .nav__link:hover, .nav__link--active {
   color: var(--color--active);
   transition: color 0.2s linear;
+}
+
+.films {
+  display: flex;
+  flex-direction: column;
+}
+
+.film {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 35px;
+}
+.film__title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: var(--color-blue);
+}
+.film p {
+  color: var(--color-text-main);
+}
+.film p:not(:last-child) {
+  margin-bottom: 15px;
+}
+.film__description p {
+  color: var(--color-text-main);
+}
+.film__description p:not(:last-child) {
+  margin-bottom: 15px;
+}
+.film__info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 @media (prefers-reduced-motion: reduce){
   * {

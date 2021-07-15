@@ -4,3 +4,8 @@ plugin:
     author: voodooley
     icon: oc-icon-video-camera
     homepage: ''
+navigation:
+    main-menu-item:
+        label: Кинотеатр
+        url: voodooley/movies/movies
+        icon: icon-video-camera

@@ -1,2 +1,8 @@
 1.0.1:
-    - Initialize plugin.
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table voodooley_movies_films'
+    - builder_table_create_voodooley_movies_films.php
+1.0.3:
+    - 'Updated table voodooley_movies_films'
+    - builder_table_update_voodooley_movies_films.php

@@ -1,5 +1,13 @@
 .page-home,
-.page-movies {
+.page-movies,
+.page-movie-single {
     display: flex;
     flex-direction: column;
+}
+
+.page {
+    &__title {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
 }

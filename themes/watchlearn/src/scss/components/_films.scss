@@ -1,0 +1,38 @@
+.films {
+    display: flex;
+    flex-direction: column;
+}
+
+.film {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 35px;
+
+    &__title {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: var(--color-blue);
+    }
+
+    p {
+        color: var(--color-text-main);
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
+    }
+
+    &__description {
+        p {
+            color: var(--color-text-main);
+            &:not(:last-child) {
+                margin-bottom: 15px;
+            }
+        }
+    }
+
+    &__info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+}
