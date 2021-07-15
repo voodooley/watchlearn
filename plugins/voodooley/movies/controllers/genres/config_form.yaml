@@ -1,0 +1,10 @@
+name: Genres
+form: $/voodooley/movies/models/genre/fields.yaml
+modelClass: Voodooley\Movies\Models\Genre
+defaultRedirect: voodooley/movies/genres
+create:
+    redirect: 'voodooley/movies/genres/update/:id'
+    redirectClose: voodooley/movies/genres
+update:
+    redirect: voodooley/movies/genres
+    redirectClose: voodooley/movies/genres

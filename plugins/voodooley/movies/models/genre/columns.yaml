@@ -1,0 +1,10 @@
+columns:
+    title:
+        label: Жанр
+        type: text
+        searchable: true
+        sortable: true
+    slug:
+        label: URL
+        type: text
+        searchable: true

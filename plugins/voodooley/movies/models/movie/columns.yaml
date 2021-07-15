@@ -1,0 +1,10 @@
+columns:
+    title:
+        label: Название
+        type: text
+        searchable: true
+        sortable: true
+    year:
+        label: 'Год выпуска'
+        type: number
+        sortable: true

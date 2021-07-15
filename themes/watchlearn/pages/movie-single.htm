@@ -1,0 +1,77 @@
+title = "Страница фильма"
+url = "/film/:slug"
+layout = "default"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Voodooley\Movies\Models\Movie"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Запись не найдена"
+==
+{% set film = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+<main class="main">
+    <div class="container">
+
+        <div class="movie">
+            {% if film %}
+                <div class="movie__main">
+                    <div class="movie__img">
+                        <img src="{{ film.poster.path }}" alt="Постер фильма">
+                    </div>
+                    <div class="movie__content">
+
+                        <div class="movie__about">
+                            <h1 class="movie__title">{{ film.title }}</h1>
+                        </div>
+
+                        <div class="movie__info movie-info">
+                            <div class="movie-info__item">
+                                <div class="movie-info__key">Год выпуска</div>
+                                <div class="movie-info__value">{{ film.year }}</div>
+                            </div>
+
+                            <div class="movie-info__item">
+                                <div class="movie-info__key">Жанр</div>
+                                <div class="movie-info__value">
+                                    {% for genre in record.genres %}
+                                        {{ genre.title|lower }}{% if not loop.last %}, {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="movie__description">
+                    <h2 class="movie__title">Описание</h2>
+                    {{ film.description|raw }}
+                </div>
+
+                {% if film.gallery|length > 0 %}
+                    <h2 class="movie__title">Медиа</h2>
+
+                    <ul class="movie-gallery">
+                        {% for image in film.gallery %}
+                            <li class="movie-gallery__item">
+                                <a data-fslightbox href="{{ image.path | resize(900, auto) }}">
+                                    <img src="{{ image.path | resize(300, auto) }}" alt="Изображение {{ loop.index }}" class="movie-gallery__image">
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+            {% else %}
+                {{ notFoundMessage }}
+            {% endif %}
+        </div>
+
+    </div>
+</main>

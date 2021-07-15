@@ -1,0 +1,10 @@
+name: Movies
+form: $/voodooley/movies/models/movie/fields.yaml
+modelClass: Voodooley\Movies\Models\Movie
+defaultRedirect: voodooley/movies/movies
+create:
+    redirect: 'voodooley/movies/movies/update/:id'
+    redirectClose: voodooley/movies/movies
+update:
+    redirect: voodooley/movies/movies
+    redirectClose: voodooley/movies/movies
