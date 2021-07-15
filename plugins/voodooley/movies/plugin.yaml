@@ -9,3 +9,8 @@ navigation:
         label: Кинотеатр
         url: voodooley/movies/movies
         icon: icon-video-camera
+        sideMenu:
+            side-menu-item:
+                label: Жанры
+                url: voodooley/movies/genres
+                icon: icon-tags

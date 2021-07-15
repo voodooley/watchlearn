@@ -23,8 +23,8 @@ h2,
 h3,
 h4,
 p,
-ul[class],
-ol[class],
+ul:not([class]),
+ol:not([class]),
 li,
 figure,
 figcaption,
@@ -119,5 +119,6 @@ a {
 
 .main {
     flex: 1 0 auto;
+    margin-bottom: 30px;
 }
 

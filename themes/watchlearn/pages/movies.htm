@@ -1,5 +1,5 @@
 title = "Movies"
-url = "/movies"
+url = "/movies/:page?"
 layout = "default"
 is_hidden = 0
 
@@ -10,8 +10,9 @@ scopeValue = "{{ :scope }}"
 displayColumn = "title"
 noRecordsMessage = "No records found"
 detailsPage = "movie-single"
-detailsKeyColumn = "id"
-detailsUrlParameter = "id"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+recordsPerPage = 5
 pageNumber = "{{ :page }}"
 ==
 <main class="main">
@@ -27,23 +28,26 @@ pageNumber = "{{ :page }}"
         <ul class="films">
             {% for record in records %}
                 <li class="film">
+                    <img src="{{ record.poster.path | resize(100,150) }}" alt="Постер к фильму '{{ record.title }}'" class="film__poster">
+                    <div class="film__content">
+                        <h2 class="film__title">
+                            {# Use spaceless tag to remove spaces inside the A tag. #}
+                            {% spaceless %}
+                                {% if detailsPage %}
+                                    <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">
+                                {% endif %}
 
-                    <h2 class="film__title">
-                        {# Use spaceless tag to remove spaces inside the A tag. #}
-                        {% spaceless %}
-                            {% if detailsPage %}
-                                <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">
-                            {% endif %}
+                                {{ record.title }}
 
-                            {{ record.title }}
+                                {% if detailsPage %}
+                                    </a>
+                                {% endif %}
+                            {% endspaceless %}
+                        </h2>
 
-                            {% if detailsPage %}
-                                </a>
-                            {% endif %}
-                        {% endspaceless %}
-                    </h2>
+                        {{ html_limit(record.description|raw, 300)  }}
+                    </div>
 
-                    {{ html_limit(record.description|raw, 300, '... Read more!')  }}
                 </li>
             {% else %}
                 <li class="no-data">{{ noRecordsMessage }}</li>
@@ -51,21 +55,25 @@ pageNumber = "{{ :page }}"
         </ul>
 
         {% if records.lastPage > 1 %}
-            <ul class="pagination">
+            <ul class="films-pagination">
                 {% if records.currentPage > 1 %}
-                    <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage-1) }) }}">&larr;
-                            Prev</a></li>
+                    <li class="films-pagination__item"><a class="films-pagination__link" href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage-1) }) }}">&larr;
+                            Предыдущий</a></li>
                 {% endif %}
 
                 {% for page in 1..records.lastPage %}
-                    <li class="{{ records.currentPage == page ? 'active' : null }}">
-                        <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+                    <li class="films-pagination__item {{ records.currentPage == page ? 'active' : null }}">
+                        <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}" class="films-pagination__link">{{ page }}</a>
                     </li>
                 {% endfor %}
 
                 {% if records.lastPage > records.currentPage %}
-                    <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage+1) }) }}">Next
-                            &rarr;</a></li>
+                    <li class="films-pagination__item">
+                        <a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage+1) }) }}"
+                           class="films-pagination__link">
+                            Следующий&rarr;
+                        </a>
+                    </li>
                 {% endif %}
             </ul>
         {% endif %}
