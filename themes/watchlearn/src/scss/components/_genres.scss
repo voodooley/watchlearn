@@ -1,0 +1,11 @@
+.genres {
+    margin-top: 40px;
+
+    &__title {
+        margin-bottom: 20px;
+        font-family: var(--font-h);
+        font-weight: 600;
+        font-size: 34px;
+        line-height: 1;
+    }
+}

@@ -47,3 +47,7 @@ fields:
         descriptionFrom: description
         span: auto
         type: relation
+    actors:
+        label: Актеры
+        span: left
+        type: actorbox

@@ -1,0 +1,11 @@
+columns:
+    name:
+        label: Имя
+        type: text
+        searchable: true
+        sortable: true
+    lastname:
+        label: Фамилия
+        type: text
+        searchable: true
+        sortable: true

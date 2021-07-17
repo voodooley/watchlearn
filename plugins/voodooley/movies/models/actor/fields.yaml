@@ -1,0 +1,19 @@
+fields:
+    name:
+        label: 'Имя актера'
+        span: left
+        type: text
+    lastname:
+        label: 'Фамилия актера'
+        span: right
+        type: text
+    birthday:
+        label: 'День Рождения'
+        mode: date
+        span: auto
+        type: datepicker
+    bio:
+        label: Биография
+        size: large
+        span: full
+        type: richeditor

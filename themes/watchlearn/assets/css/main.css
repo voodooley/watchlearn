@@ -1,5 +1,6 @@
-@import url(https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Ubuntu:wght@500;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Ubuntu:wght@500;700&display=swap);
 @charset "UTF-8";
+/* Настройки */
 /* Указываем box sizing */
 *,
 *::before,
@@ -100,20 +101,30 @@ a {
   --color-active: #fe9971;
   --color-green: #379956;
   --color-yellow: #ffc85b;
+  --color-grey-light: #f7f7f7;
   --color-grey: #eeeeee;
   --color-grey-dark: #666666;
+  --color-blue-light: #598ca3;
   --color-blue: #234c63;
   --color-text-main: #0d1321;
+  --color-bg-input: #e3ffe6;
+  /* Шрифты */
+  --font-h: "Ubuntu", sans-serif;
+  --font-text: "Nunito", sans-serif;
 }
 
+/* Компоненты */
 .page-home,
 .page-movies,
-.page-movie-single {
+.page-movie-single,
+.page-genres,
+.page-404 {
   display: flex;
   flex-direction: column;
 }
 
 .page__title {
+  font-family: var(--font-h);
   margin-top: 30px;
   margin-bottom: 30px;
 }
@@ -160,6 +171,7 @@ a {
   transition: color 0.2s linear;
 }
 
+/* Общие блоки */
 .films {
   display: flex;
   flex-direction: column;
@@ -172,12 +184,27 @@ a {
 }
 .films-pagination__link {
   color: var(--color-green);
+  transition: color 150ms linear;
+}
+.films-pagination__link--active {
+  color: var(--color-active);
+}
+.films-pagination__link:hover {
+  color: var(--color-active);
+  transition: color 150ms linear;
 }
 
 .film {
   display: flex;
   gap: 30px;
-  margin-bottom: 35px;
+  padding: 20px;
+  margin: 0 -20px;
+  border-radius: 10px;
+  transition: background-color 0.2s ease-in-out;
+}
+.film:hover {
+  background-color: var(--color-grey-light);
+  transition: background-color 0.2s ease-in-out;
 }
 .film__content {
   display: flex;
@@ -191,9 +218,19 @@ a {
   object-fit: cover;
 }
 .film__title {
-  margin-bottom: 20px;
-  font-size: 24px;
+  font-family: var(--font-h);
+  font-weight: 500;
+  font-size: 20px;
   color: var(--color-blue);
+  transition: color 0.2s ease-in-out;
+}
+.film__title:hover {
+  color: var(--color-blue-light);
+  transition: color 0.2s ease-in-out;
+}
+.film__value {
+  font-size: 14px;
+  color: var(--color-grey-dark);
 }
 .film p {
   color: var(--color-text-main);
@@ -216,6 +253,70 @@ a {
   gap: 15px;
 }
 
+.film-info__link {
+  font-size: 14px;
+  color: var(--color-grey-dark);
+  transition: color 0.2s linear;
+}
+.film-info__link:hover {
+  color: var(--color-text-main);
+  transition: color 0.2s linear;
+}
+
+.contacts {
+  display: flex;
+  justify-content: center;
+}
+
+.contact-form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 1024px;
+}
+.contact-form__item {
+  grid-column: 2 span;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+.contact-form__item--big {
+  grid-column: 4 span;
+}
+.contact-form__item label {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+.contact-form__input, .contact-form__messagebox {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--color-bg-input);
+}
+.contact-form__input:focus-visible, .contact-form__messagebox:focus-visible {
+  border-radius: 10px;
+  -moz-outline-radius: 10px;
+  outline: 2px solid var(--color-green);
+}
+.contact-form__messagebox {
+  resize: vertical;
+}
+.contact-form__btn {
+  margin: 0;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--color-green);
+  color: var(--color-grey-light);
+  transition: color 0.2s ease-in-out;
+}
+.contact-form__btn:hover {
+  color: var(--color-active);
+  transition: color 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+/* Различные страницы */
 .movie {
   margin-top: 30px;
 }
@@ -235,6 +336,7 @@ a {
 .movie__img {
   width: 300px;
   height: 450px;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.18);
 }
 .movie__img img {
   width: 100%;
@@ -243,8 +345,16 @@ a {
   object-fit: cover;
 }
 .movie__title {
+  font-family: var(--font-h);
+  font-weight: 600;
+  font-size: 40px;
   margin-bottom: 20px;
   line-height: 1;
+}
+.movie__title--single {
+  font-weight: 500;
+  font-size: 28px;
+  color: var(--color-text-main);
 }
 .movie__description {
   margin-bottom: 50px;
@@ -265,6 +375,7 @@ a {
   align-items: baseline;
 }
 .movie-info__key {
+  flex-shrink: 0;
   padding-right: 10px;
   width: 200px;
   font-size: 16px;
@@ -273,6 +384,9 @@ a {
 .movie-info__value {
   padding-left: 10px;
   font-weight: 600;
+}
+.movie-info__link:hover {
+  text-decoration: underline;
 }
 
 .movie-gallery {
@@ -289,6 +403,17 @@ a {
   height: 100%;
   -o-object-fit: cover;
   object-fit: cover;
+}
+
+.genres {
+  margin-top: 40px;
+}
+.genres__title {
+  margin-bottom: 20px;
+  font-family: var(--font-h);
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 1;
 }
 @media (prefers-reduced-motion: reduce){
   * {

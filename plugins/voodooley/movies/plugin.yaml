@@ -14,3 +14,7 @@ navigation:
                 label: Жанры
                 url: voodooley/movies/genres
                 icon: icon-tags
+            side-menu-item2:
+                label: Актеры
+                url: voodooley/movies/actors
+                icon: icon-users

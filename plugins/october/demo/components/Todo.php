@@ -6,7 +6,7 @@ use ApplicationException;
 class Todo extends ComponentBase
 {
 
-    public function componentDetails()
+    public function componentDetails(): array
     {
         return [
             'name'        => 'Todo List',
@@ -14,7 +14,7 @@ class Todo extends ComponentBase
         ];
     }
 
-    public function defineProperties()
+    public function defineProperties(): array
     {
         return [
             'max' => [

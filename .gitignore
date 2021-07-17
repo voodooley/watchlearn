@@ -24,7 +24,8 @@ sftp-config.json
 nbproject
 .idea
 .vscode
-_ide_helper.php
+_ide_helper*.php
+.phpstorm.meta.php
 
 # Other ignores
 .DS_Store

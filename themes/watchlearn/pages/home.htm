@@ -1,12 +1,16 @@
 title = "Home"
 url = "/"
 layout = "default"
-==
+is_hidden = 0
 
+[actors]
+result = 0
+sortOrder = "asc"
+==
 <main class="main">
     <div class="container">
         <h1>Home Page</h1>
         <p>Это учебный проект</p>
+        {% component 'actors' %}
     </div>
 </main>
-

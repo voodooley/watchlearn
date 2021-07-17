@@ -1,11 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Ubuntu:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Ubuntu:wght@500;700&display=swap');
+
+/* Настройки */
 @import 'settings';
 @import 'vars';
 
-
+/* Компоненты */
 @import "components/pages";
 @import "components/header";
 @import "components/footer";
 @import "components/nav";
+
+
+/* Общие блоки */
 @import "components/films";
+@import "components/contact-form";
+
+/* Различные страницы */
 @import "components/movie";
+@import "components/genres";

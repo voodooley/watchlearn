@@ -1,0 +1,63 @@
+title = "Жанры"
+url = "/genres/:slug"
+layout = "default"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Voodooley\Movies\Models\Genre"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+==
+{% set genre = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+<main class="main">
+    <section class="genres">
+        <div class="container genres__container">
+
+            {% if genre %}
+                <h1 class="genres__title">{{ genre.title }}</h1>
+
+                {% if genre.movies|length > 0 %}
+
+                    <ul class="films">
+                        {% for movie in record.movies %}
+
+                            <li class="films__item film">
+
+                                <img src="{{ movie.poster.path | resize(100,150) }}" alt="Постер к фильму '{{ movie.title }}'"
+                                     class="film__poster">
+
+                                <div class="film__content">
+                                    <h2 class="film__title">
+                                        <a href="/film/{{ movie.slug }}" class="film__link">{{ movie.title }}</a>
+                                    </h2>
+                                    <span class="film__value">
+                                        {{ movie.year }}
+                                    </span>
+                                    <div class="film-info">
+                                        {% for movGenre in movie.genres %}
+                                            <a class="film-info__link" href="/genres/{{ movGenre.slug }}">
+                                                {{ movGenre.title|lower }}{% if not loop.last %}, {% endif %}
+                                            </a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                            </li>
+
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+
+            {% else %}
+                {{ notFoundMessage }}
+            {% endif %}
+
+        </div>
+    </section>
+</main>

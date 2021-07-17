@@ -30,10 +30,11 @@
                 </li>
                 <li class="nav__item">
                     <a href="{{ 'movies'|page }}" class="nav__link
-                    {% if pageId == 'movies' %}nav__link--active {% endif %}">Movies</a>
+                    {% if pageId == 'movies' %}nav__link--active {% endif %}">Фильмы</a>
                 </li>
                 <li class="nav__item">
-                    <a href="#" class="nav__link">Ссылка 3</a>
+                    <a href="{{ 'contact'|page }}" class="nav__link
+                    {% if pageId == 'contact' %}nav__link--active {% endif %}">Контакты</a>
                 </li>
                 <li class="nav__item">
                     <a href="#" class="nav__link">Ссылка 4</a>

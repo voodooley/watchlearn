@@ -8,7 +8,7 @@ use Model;
 class Genre extends Model
 {
     use \October\Rain\Database\Traits\Validation;
-    
+
     /*
      * Disable timestamps by default.
      * Remove this line if timestamps are defined in the database table.
@@ -25,5 +25,16 @@ class Genre extends Model
      * @var array Validation rules
      */
     public $rules = [
+    ];
+
+    /*  Relations  */
+
+    public $belongsToMany = [
+      'movies' => [
+          Movie::class,
+          'table' => 'voodooley_movies_films_genres',
+          'order' => 'title',
+          'otherKey' => 'film_id'
+      ]
     ];
 }

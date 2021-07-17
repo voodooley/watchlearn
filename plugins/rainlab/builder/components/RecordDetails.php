@@ -49,7 +49,7 @@ class RecordDetails extends ComponentBase
     // Properties
     //
 
-    public function defineProperties()
+    public function defineProperties(): array
     {
         return [
             'modelClass' => [

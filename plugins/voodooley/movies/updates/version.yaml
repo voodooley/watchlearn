@@ -12,3 +12,9 @@
 1.0.5:
     - 'Created table voodooley_movies_films_genres'
     - builder_table_create_voodooley_movies_films_genres.php
+1.0.6:
+    - 'Created table voodooley_movies_actors'
+    - builder_table_create_voodooley_movies_actors.php
+1.0.7:
+    - 'Created table voodooley_movies_actors_films'
+    - builder_table_create_voodooley_movies_actors_films.php

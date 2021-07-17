@@ -38,11 +38,25 @@ notFoundMessage = "Запись не найдена"
                             <div class="movie-info__item">
                                 <div class="movie-info__key">Жанр</div>
                                 <div class="movie-info__value">
-                                    {% for genre in record.genres %}
-                                        {{ genre.title|lower }}{% if not loop.last %}, {% endif %}
+                                    {% for genre in film.genres %}
+                                        <a class="movie-info__link" href="/genres/{{ genre.slug }}">{{ genre.title|lower }}</a>{% if not loop.last %}, {% endif %}
                                     {% endfor %}
                                 </div>
                             </div>
+
+                            {% if film.actors|length > 0 %}
+                                <div class="movie-info__item">
+                                    <div class="movie-info__key">Актеры</div>
+                                    <div class="movie-info__value">
+                                        {% for actor in film.actors %}
+                                            <a class="movie-info__link" href="/actors/{{ actor.id }}">
+                                                {{ actor.name }}&nbsp;{{ actor.lastname }}{% if not loop.last %}, {% endif %}
+                                            </a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+
                         </div>
 
                     </div>
@@ -50,18 +64,19 @@ notFoundMessage = "Запись не найдена"
 
 
                 <div class="movie__description">
-                    <h2 class="movie__title">Описание</h2>
+                    <h2 class="movie__title movie__title--single">Описание</h2>
                     {{ film.description|raw }}
                 </div>
 
                 {% if film.gallery|length > 0 %}
-                    <h2 class="movie__title">Медиа</h2>
+                    <h2 class="movie__title movie__title--single">Медиа</h2>
 
                     <ul class="movie-gallery">
                         {% for image in film.gallery %}
                             <li class="movie-gallery__item">
                                 <a data-fslightbox href="{{ image.path | resize(900, auto) }}">
-                                    <img src="{{ image.path | resize(300, auto) }}" alt="Изображение {{ loop.index }}" class="movie-gallery__image">
+                                    <img src="{{ image.path | resize(300, auto) }}" alt="Изображение {{ loop.index }}"
+                                         class="movie-gallery__image">
                                 </a>
                             </li>
                         {% endfor %}

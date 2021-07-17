@@ -1,0 +1,6 @@
+plugin:
+    name: 'voodooley.contact::lang.plugin.name'
+    description: 'voodooley.contact::lang.plugin.description'
+    author: voodooley
+    icon: oc-icon-envelope-o
+    homepage: ''

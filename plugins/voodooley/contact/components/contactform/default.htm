@@ -1,0 +1,27 @@
+<div class="contacts">
+    <form class="contact-form" data-request="onSend">
+
+        <div class="contact-form__item">
+            <label>Ваше имя</label>
+            <input class="contact-form__input" type="text" name="name" aria-label="Поле ввода имени">
+        </div>
+
+        <div class="contact-form__item">
+            <label>Ваш E-mail</label>
+            <input class="contact-form__input" type="email" name="email" aria-label="Поле ввода email">
+        </div>
+
+        <div class="contact-form__item contact-form__item--big">
+            <label>Сообщение</label>
+            <textarea class="contact-form__messagebox" name="content" aria-label="Поле ввода email" rows="5"></textarea>
+        </div>
+
+        <button class="contact-form__btn" type="submit">Отправить</button>
+
+    </form>
+    <ul>
+        {% for error in errors.all() %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+</div>

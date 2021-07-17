@@ -1,0 +1,61 @@
+.contacts {
+    display: flex;
+    justify-content: center;
+}
+
+.contact-form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 1024px;
+
+    &__item {
+        grid-column: 2 span;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 0;
+
+        &--big {
+            grid-column: 4 span;
+        }
+
+        label {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+    }
+
+    &__input,
+    &__messagebox {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        background-color: var(--color-bg-input);
+
+        &:focus-visible {
+            border-radius: 10px;
+            -moz-outline-radius: 10px;
+            outline: 2px solid var(--color-green);
+        }
+    }
+
+    &__messagebox {
+        resize: vertical;
+    }
+
+    &__btn {
+        margin: 0;
+        padding: 10px 30px;
+        border: none;
+        border-radius: 10px;
+        background-color: var(--color-green);
+        color: var(--color-grey-light);
+        transition: color .2s ease-in-out;
+
+        &:hover {
+            color: var(--color-active);
+            transition: color .2s ease-in-out;
+            cursor: pointer;
+        }
+    }
+}

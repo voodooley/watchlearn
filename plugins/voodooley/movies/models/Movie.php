@@ -26,11 +26,17 @@ class Movie extends Model
 
     public $belongsToMany = [
       'genres' => [
-          'Voodooley\Movies\Models\Genre',
+          Genre::class,
           'table' => 'voodooley_movies_films_genres',
           'order' => 'title',
           'key' => 'film_id'
-      ]
+      ],
+        'actors' => [
+            Actor::class,
+            'table' => 'voodooley_movies_actors_films',
+            'key' => 'film_id',
+            'order' => 'name',
+        ]
     ];
 
     public $attachOne = [
