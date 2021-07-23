@@ -1,0 +1,53 @@
+{% if canRegister %}
+    <h3>Register</h3>
+
+    {{ form_ajax('onRegister') }}
+
+        <div class="form-group">
+            <label for="registerName">Полное имя</label>
+            <input
+                name="name"
+                type="text"
+                class="form-control"
+                id="registerName"
+                placeholder="Введите полное имя" />
+        </div>
+
+        <div class="form-group">
+            <label for="registerEmail">Email</label>
+            <input
+                name="email"
+                type="email"
+                class="form-control"
+                id="registerEmail"
+                placeholder="Введите email" />
+        </div>
+
+        {% if loginAttribute == "username" %}
+            <div class="form-group">
+                <label for="registerUsername">Имя пользователя</label>
+                <input
+                    name="username"
+                    type="text"
+                    class="form-control"
+                    id="registerUsername"
+                    placeholder="Введите username" />
+            </div>
+        {% endif %}
+
+        <div class="form-group">
+            <label for="registerPassword">Пароль</label>
+            <input
+                name="password"
+                type="password"
+                class="form-control"
+                id="registerPassword"
+                placeholder="Придумайте пароль" />
+        </div>
+
+        <button type="submit" class="contact-form__btn">Зарегистрироваться</button>
+
+    {{ form_close() }}
+{% else %}
+    <!-- Registration is disabled. -->
+{% endif %}

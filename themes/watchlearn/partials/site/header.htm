@@ -1,46 +1,64 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% placeholder page_title default %}{{ this.page.title }}{% endplaceholder %}</title>
-    {% partial "meta/styles" %}
-    {% partial "meta/seo" %}
-    <meta name="generator" content="OctoberCMS">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% placeholder page_title default %}{{ this.page.title }}{% endplaceholder %}</title>
+  {% partial "meta/styles" %}
+  {% partial "meta/seo" %}
+  <meta name="generator" content="OctoberCMS">
 </head>
 {% set pageId = this.page.id %}
 {% set pageTitle = this.page.title %}
 {% if pageId is empty %}
-    {% set pageId = page.id %}
+  {% set pageId = page.id %}
 {% endif %}
 {% if pageTitle is empty %}
-    {% set pageTitle = page.title %}
+  {% set pageTitle = page.title %}
 {% endif %}
 <body class="page-{{ pageId }} layout-{{ this.layout.id }}">
 
 <header class="header">
-    <div class="container header__container">
-        <div class="logo header__logo">Watchlearn</div>
-        <nav class="nav header__nav">
-            <ul class="nav__items">
-                <li class="nav__item">
-                    <a href="{{ 'home'|page }}" class="nav__link
+  <div class="container header__container">
+    <div class="logo header__logo">Watchlearn</div>
+    <nav class="nav header__nav">
+      <ul class="nav__items">
+        <li class="nav__item">
+          <a href="{{ 'home'|page }}" class="nav__link
                     {% if pageId == 'home' %}nav__link--active {% endif %}">Главная</a>
-                </li>
-                <li class="nav__item">
-                    <a href="{{ 'movies'|page }}" class="nav__link
+        </li>
+        <li class="nav__item">
+          <a href="{{ 'movies'|page }}" class="nav__link
                     {% if pageId == 'movies' %}nav__link--active {% endif %}">Фильмы</a>
-                </li>
-                <li class="nav__item">
-                    <a href="{{ 'contact'|page }}" class="nav__link
+        </li>
+        <li class="nav__item">
+          <a href="{{ 'contact'|page }}" class="nav__link
                     {% if pageId == 'contact' %}nav__link--active {% endif %}">Контакты</a>
-                </li>
-                <li class="nav__item">
-                    <a href="#" class="nav__link">Ссылка 4</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+        </li>
+        <li class="nav__item">
+          <a href="{{ 'add-actors'|page }}" class="nav__link
+                  {% if pageId == 'add-actors' %}nav__link--active {% endif %}">Добавить актера</a>
+        </li>
+
+        <li class="nav__item">
+          <a href="{{ 'login'|page }}" class="nav__link
+            {% if pageId == 'login' %}nav__link--active {% endif %}">
+            {% if not user %}
+              Войти
+            {% else %}
+              Профиль
+            {% endif %}
+          </a>
+        </li>
+
+        {% if user %}
+          <li class="nav__item">
+            <a data-request="onLogout" class="nav__link nav__link--logout" data-request-data="redirect: '/'">Выйти</a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
 
 </header>

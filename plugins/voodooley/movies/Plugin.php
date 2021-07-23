@@ -8,7 +8,8 @@ class Plugin extends PluginBase
     public function registerComponents(): array
     {
         return [
-            'Voodooley\Movies\Components\Actors' => 'actors'
+            'Voodooley\Movies\Components\Actors' => 'actors',
+            'Voodooley\Movies\Components\ActorForm' => 'actorform'
         ];
     }
 

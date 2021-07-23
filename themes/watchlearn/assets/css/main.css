@@ -158,6 +158,7 @@ a {
 
 .nav__items {
   display: flex;
+  margin: 0;
 }
 .nav__item:not(:last-child) {
   margin-right: 20px;
@@ -169,6 +170,9 @@ a {
 .nav__link:hover, .nav__link--active {
   color: var(--color-active);
   transition: color 0.2s linear;
+}
+.nav__link--logout {
+  cursor: pointer;
 }
 
 /* Общие блоки */

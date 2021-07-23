@@ -1,0 +1,18 @@
+title = "Войти"
+url = "/login"
+layout = "default"
+is_hidden = 0
+
+[account]
+paramCode = "code"
+forceSecure = 0
+requirePassword = 0
+==
+<main class="main">
+  <div class="container">
+    <h1>Войти или зарегистрироваться</h1>
+
+    {% component 'account' %}
+
+  </div>
+</main>

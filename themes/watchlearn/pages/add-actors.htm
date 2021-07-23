@@ -1,0 +1,26 @@
+title = "Добавить актера"
+url = "/add-actors"
+layout = "default"
+is_hidden = 0
+
+[actorform]
+
+[session]
+security = "all"
+==
+<main class="main">
+  <div class="container">
+    <h1>Добавление актера</h1>
+
+    {% if user %}
+
+      {% component 'actorform' %}
+
+      {% else %}
+
+      <p>Извините, надо <a href="{{ 'login'|page }}">войти</a> в систему</p>
+
+    {% endif %}
+
+  </div>
+</main>

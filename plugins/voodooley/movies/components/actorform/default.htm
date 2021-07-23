@@ -1,0 +1,23 @@
+<div class="contacts">
+    <form class="contact-form" data-request="onSave">
+
+        <div class="contact-form__item">
+            <label>Имя актера</label>
+            <input class="contact-form__input" type="text" name="name" aria-label="Имя актера">
+        </div>
+
+        <div class="contact-form__item">
+            <label>Фамилия актера</label>
+            <input class="contact-form__input" type="text" name="lastname" aria-label="Фамилия актера">
+        </div>
+
+        <button class="contact-form__btn" type="submit">Сохранить актера</button>
+
+      {% flash success %}
+        <p data-control="flash-message" data-interval="5" class="success">
+        {{ message }}
+      </p>
+      {% endflash %}
+
+    </form>
+</div>
