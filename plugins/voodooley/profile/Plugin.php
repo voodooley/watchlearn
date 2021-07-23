@@ -3,6 +3,7 @@
 use Backend;
 use System\Classes\PluginBase;
 use RainLab\User\Controllers\Users as UsersController;
+use RainLab\User\Models\User as UserModel;
 
 /**
  * Profile Plugin Information File
@@ -40,6 +41,10 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
+        UserModel::extend(function ($model) {
+            $model->addFillable(['vk', 'bio']);
+        });
+
         UsersController::extendFormFields(function ($form, $model, $context) {
             $form->addTabFields([
                 'vk' => [
