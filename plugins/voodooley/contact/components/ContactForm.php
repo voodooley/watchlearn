@@ -1,10 +1,13 @@
 <?php namespace Voodooley\Contact\Components;
 
+use AjaxException;
 use Cms\Classes\ComponentBase;
+use Flash;
 use Input;
 use Mail;
 use Validator;
 use Redirect;
+use ValidationException;
 
 class ContactForm extends ComponentBase
 {
@@ -16,31 +19,49 @@ class ContactForm extends ComponentBase
         ];
     }
 
+    public function defineProperties(): array
+    {
+        return [
+            'email' => [
+                'title'       => 'Email',
+                'description' => 'Данный email будет использоваться для отправки всех заявок с формы.',
+                'default'     => 'r.plokhikh@yandex.ru',
+                'required'    => true,
+            ]
+        ];
+    }
+
+    /**
+     * @throws AjaxException
+     */
     public function onSend()
     {
-        $validator = Validator::make(
-            [
-                'name' => Input::get('name'),
-                'email' => Input::get('email')
-            ],
-            [
-                'name' => 'required',
-                'email' => 'required|email'
-            ]
-        );
+        if (!Input::has('name') || empty(Input::get('name'))) {
+            throw new AjaxException(['X_OCTOBER_ERROR_MESSAGE' => 'Вы должны указать свое имя']);
+        }
+        if (!Input::has('email') || empty(Input::get('email'))) {
+            throw new AjaxException([ 'X_OCTOBER_ERROR_MESSAGE' => 'Вы должны указать email для связи' ]);
+        }
 
-        if ($validator->fails()) {
-            return['#result' => $this->renderPartial('contactform::messages', [
-                'errorMessages' => $validator->messages()->all()
-            ])];
+        $data = [
+            'name'       => e(Input::get('name')),
+            'email'      => e(Input::get('email')),
+        ];
+
+        if (Input::has('content') && !empty(Input::get('content'))) {
+            $data['content'] = e(Input::get('content'));
+        }
+
+        $email = $this->property('email');
+        Mail::send('voodooley.contact::contactform.feedback', $data, function ($message) use ($email) {
+            $message->to($email, 'Admin Person');
+        });
+
+        // Проверка успешно ли ушло письмо
+        if (count(Mail::failures()) == 0) {
+            Flash::success('Форма успешно отправлена!');
         } else {
-            $vars = ['name' => Input::get('name'), 'email' => Input::get('email'), 'content' => Input::get('content')];
-
-            Mail::send('voodooley.contact::mail.message', $vars, function ($message) {
-
-                $message->to('admin@domain.tld', 'Admin Person');
-                $message->subject('Новое сообщение из контактной формы');
-            });
+            throw new AjaxException([ 'X_OCTOBER_ERROR_MESSAGE' => 'Произошла ошибка, попробуйте позже' ]);
         }
     }
 }

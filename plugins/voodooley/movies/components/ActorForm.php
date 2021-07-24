@@ -23,9 +23,7 @@ class ActorForm extends ComponentBase
         $actor->name = Input::get('name');
         $actor->lastname = Input::get('lastname');
         $actor->save();
-        Flash::success('<p data-control="flash-message" data-interval="15" class="success">
-                            Актер добавлен!
-                        </p>');
+        Flash::success('Актер добавлен!');
         return Redirect::back();
     }
 }
